@@ -35,8 +35,7 @@ node {
 
    stage('Run Container') {
        /* Start Continer: */
-	 docker.image('surajnmandhare/nodejs:latest.$BUILD_NUMBER').withRun ("-p 80:8081") { 
-           sh 'npm start'
+	 docker.image('surajnmandhare/nodejs:latest.$BUILD_NUMBER').withRun ("-p 80:8081 --args npm start") { 
         }
     }
 }
