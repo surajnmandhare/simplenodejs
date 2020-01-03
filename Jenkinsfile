@@ -39,5 +39,4 @@ node {
            sh 'docker run -d -p 80:8081 surajnmandhare/nodejs:latest.$BUILD_NUMBER npm start'
 	}
      }
-    }
 }
