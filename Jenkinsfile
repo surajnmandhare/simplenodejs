@@ -32,9 +32,9 @@ node {
             app.push("latest.$BUILD_NUMBER")
         }
 
-     post('run image') {
+     stage('deploy image') {
         /* Finally, we'll push the image: */
-        success {
+        agent {
            sh 'docker run -d -p 80:8081 surajnmandhare/nodejs:latest.$BUILD_NUMBER "npm start"'
 	}
       }
