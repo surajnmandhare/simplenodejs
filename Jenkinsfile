@@ -29,13 +29,13 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-            app.push("${BUILD_TAG.BUILD_NUMBER}")
+            app.push("latest.$BUILD_NUMBER")
         }
 
      stage('Deploy image') {
         /* Finally, we'll push the image: */
         app.deploy {
-           sh 'docker run -p 80:8081 surajnmandhare/nodejs "npm start"'
+           sh 'docker run -p 80:8081 surajnmandhare/nodejs:latest.$BUILD_NUMBER "npm start"'
 	}
       }
     }
