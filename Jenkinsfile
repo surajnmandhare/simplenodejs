@@ -35,7 +35,7 @@ node {
 
      stage('Deploy Image'){
         /* Finally, we'll push the image: */
-           docker.image(surajnmandhare/nodejs.$BUILDNUMBER).withRUN('-p 80:8081 npm start'){
+           docker.image('nodejs.$BUILDNUMBER').withRUN('-p 80:8081 npm start'){
 	    /* do things */
 	}
      }
