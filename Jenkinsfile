@@ -34,11 +34,8 @@ node {
     }
 
      stage('Deploy Image'){
-        /* Finally, we'll push the image: */
-	   docker.withServer('tcp://127.0.0.1:4243') {
-             docker.image('nodejs.$BUILDNUMBER').withRUN('-p 80:8081 npm start'){
-	    /* do things */
-	  }
+        /* Finally, we'll deploy the image: */
+        
+        app.deploy = docker.image('nodejs.$BUILDNUMBER').withRUN('-p 80:8081 npm start')
 	}
-     }
 }
