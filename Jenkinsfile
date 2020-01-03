@@ -37,5 +37,6 @@ node {
         app.deploy {
             docker run -p 80:8081 surajnmandhare/nodejs "npm start"
 	}
+      }
     }
 }
