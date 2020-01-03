@@ -35,7 +35,7 @@ node {
      stage('Deploy image') {
         /* Finally, we'll push the image: */
         app.deploy {
-            docker run -p 80:8081 surajnmandhare/nodejs "npm start"
+           sh 'docker run -p 80:8081 surajnmandhare/nodejs "npm start"'
 	}
       }
     }
