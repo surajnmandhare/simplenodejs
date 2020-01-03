@@ -4,7 +4,7 @@ node {
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
 
-        checkout scm
+        git 'https://github.com/surajnmandhare/simplenodejs.git'
     }
 
     stage('Build image') {
@@ -29,8 +29,13 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+            app.push("${BUILD_TAG.BUILD_NUMBER}")
         }
+
+     stage('Deploy image') {
+        /* Finally, we'll push the image: */
+        app.deploy {
+            docker run -p 80:8081 surajnmandhare/nodejs "npm start"
+	}
     }
 }
