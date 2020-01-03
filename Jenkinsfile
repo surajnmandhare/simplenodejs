@@ -30,7 +30,7 @@ node {
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
             app.push("latest.$BUILD_NUMBER")
-            app.deploy = docker.image('nodejs.$BUILDNUMBER').withRUN('-p 80:8081 npm start')
+        docker.image('nodejs.$BUILDNUMBER').withRUN('-p 80:8081 npm start')
         }
     }
 }
