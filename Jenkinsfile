@@ -37,8 +37,9 @@ node {
        /* Start Continer: */
 	 docker.image('surajnmandhare/nodejs:latest.$BUILD_NUMBER').withRun ("-d -p 80:8081") { 
         sh label: 
-        'Running npm start', 
-        '''
+        'Container started', 
+	script: '''
+	'''
         }
     }
 }
